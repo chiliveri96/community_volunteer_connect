@@ -23,10 +23,10 @@ app.secret_key = os.getenv("SECRET_KEY", "dev-secret")
 # DB helper
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "localhost"),
-        user=os.getenv("MYSQL_USER", "root"),
-        password=os.getenv("MYSQL_PASSWORD", ""),
-        database=os.getenv("MYSQL_DATABASE", "community_volunteer_connect"),
+        host=os.getenv("MYSQL_HOST"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),
         auth_plugin="mysql_native_password"
     )
 
@@ -543,4 +543,5 @@ def join_activity(activity_id):
 from waitress import serve
 
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Render uses PORT env
+    app.run(host="0.0.0.0", port=port)

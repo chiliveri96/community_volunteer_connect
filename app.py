@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 
 
 
-
 # Load env file (name it .env or database.env; adjust path if needed)
 load_dotenv("database.env")
 
@@ -20,7 +19,7 @@ app.secret_key = os.getenv("SECRET_KEY", "dev-secret")
 # DB helper
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "localhost"),
+        host=os.getenv("MYSQL_HOST", "cvc-db-abcde.render.com"),
         user=os.getenv("MYSQL_USER", "root"),
         password=os.getenv("MYSQL_PASSWORD", ""),
         database=os.getenv("MYSQL_DATABASE", "community_volunteer_connect"),
