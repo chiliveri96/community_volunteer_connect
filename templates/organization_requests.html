@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Volunteer Join Requests</title>
+<link rel="stylesheet" href="/static/css/org_requests.css">
+
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Volunteer Join Requests</h2>
+
+{% if requests %}
+<div class="requests-container">
+
+{% for r in requests %}
+<div class="request-card">
+
+  <div class="request-title">
+      <p><span class="info-label">Full Name:</span> {{ r.full_name }}</p>
+  
+  </div>
+
+  <p><span class="info-label">Phone:</span> {{ r.phone }}</p>
+  <p><span class="info-label">Email:</span> {{ r.email }}</p>
+  <p><span class="info-label">Skills:</span> {{ r.skills }}</p>
+  <p><span class="info-label">Activity:</span> {{ r.activity_name }}</p>
+
+  <p class="status">
+    {% if r.status == 'pending' %}🟡 Pending
+    {% elif r.status == 'approved' %}🟢 Approved
+    {% else %}🔴 Rejected{% endif %}
+  </p>
+
+  {% if r.status == 'pending' %}
+  <a href="{{ url_for('organization_approve', req_id=r.req_id) }}">Approve ✅</a>
+<a href="{{ url_for('organization_reject', req_id=r.req_id) }}">Reject ❌</a>
+
+  {% else %}
+    ✅ Done
+  {% endif %}
+
+</div>
+{% endfor %}
+
+</div>
+{% else %}
+<p style="text-align:center;">No join requests yet.</p>
+{% endif %}
+
+</body>
+</html>

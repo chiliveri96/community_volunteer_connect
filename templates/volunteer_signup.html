@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Sign Up | Community Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signupv.css') }}">
+    <script src="{{ url_for('static', filename='js/signupv.js') }}" defer></script>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left Info Section -->
+        <div class="info-panel">
+            <div class="info-content">
+                <h1>Join Our Community</h1>
+                <p>Become a volunteer and be part of positive change!</p>
+                <ul>
+                    <li>🤝 Connect with NGOs & local groups</li>
+                    <li>🌍 Contribute to meaningful causes</li>
+                    <li>💪 Build your volunteer experience</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Right Signup Form Section -->
+        <div class="form-section">
+            <div class="form-box">
+                <h2>Volunteer Sign Up</h2>
+                <p class="subtitle">Fill in your details to get started!</p>
+                <!--
+                <form id="signupForm" method="POST" action="{{ url_for('volunteer_signup') }}" onsubmit="return validateForm()">
+                    <div class="input-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create password" required minlength="6">
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                    </div>
+                    <button type="submit" class="btn">Signup</button>
+                    <p class="login-link">Already have an account? <a href="{{ url_for('volunteer_login') }}">Login</a></p>
+                </form>
+            -->
+                <form id="signupForm" method="POST" action="{{ url_for('volunteer_signup') }}" onsubmit="return validateForm()">
+
+    <div class="input-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}">
+    </div>
+
+    <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="input-group">
+        <label for="skills">Skills (Optional)</label>
+        <input type="text" id="skills" name="skills" placeholder="Eg: Teaching, Cooking, Medical help">
+    </div>
+
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create password" required minlength="6">
+    </div>
+
+    <div class="input-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+    </div>
+
+    <button type="submit" class="btn">Signup</button>
+    <p class="login-link">Already have an account? <a href="{{ url_for('volunteer_login') }}">Login</a></p>
+
+</form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

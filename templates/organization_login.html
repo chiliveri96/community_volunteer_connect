@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>organization Login | Community Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/logino.css') }}">
+  <script src="{{ url_for('static', filename='js/logino.js') }}" defer></script>
+</head>
+<body>
+
+
+  <div class="login-container">
+    <!-- Left Info Section -->
+    <div class="left-section">
+      <h1>Welcome Back!</h1>
+      <p>Access your organization dashboard, manage events, and connect with volunteers efficiently.</p>
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="organization" class="illustration">
+    </div>
+
+    <!-- Right Login Form -->
+    <div class="right-section">
+      <h2>Organization Login</h2>
+
+
+      <!--<form id="organizationLoginForm" onsubmit="return validateorganizationLogin()" method="POST" action="{{ url_for('organization_login') }}">
+    -->
+      
+    <form id="organizationLoginForm" method="POST" action="{{ url_for('organization_login') }}">
+
+      
+              <label for="email">Email or Phone</label>
+      <input type="text" id="email" name="email_phone" placeholder="Enter email or phone" required>
+
+        <label for="organizationPassword">Password</label>
+        <input type="password" id="organizationPassword" name="organizationPassword" placeholder="Enter password" required>
+
+        <button type="submit" class="btn">Login</button>
+
+        <p class="signup-link">
+          Don't have an account? <a href="{{ url_for('organization_signup') }}">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

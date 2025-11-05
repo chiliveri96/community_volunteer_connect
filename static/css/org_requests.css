@@ -1,0 +1,69 @@
+.pending-btn {
+  background: orange;
+  color: white;
+  cursor: not-allowed;
+}
+
+.rejected-btn {
+  background: crimson;
+  color: white;
+  cursor: not-allowed;
+}
+
+<style>
+/* ✅ You can move this CSS to org_requests.css */
+
+/* Grid layout for volunteer cards */
+.requests-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Volunteer card style */
+.request-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  font-family: Arial, sans-serif;
+}
+
+.request-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #444;
+}
+
+.status {
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-approve, .btn-reject {
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-approve {
+  background: #28a745;
+  color: #fff;
+}
+
+.btn-reject {
+  background: blue;
+  color: #fff;
+}
+</style>

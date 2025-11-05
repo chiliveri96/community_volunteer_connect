@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Community Volunteer Connect - Home</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+  }
+  header {
+    background-color: #006d77;
+    color: white;
+    padding: 30px 15%;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.8em;
+  }
+  header p {
+    font-size: 1.2em;
+    font-weight: 300;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  
+  section.about {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  section.about h2 {
+    font-size: 2em;
+    color: #007f8a;
+    margin-bottom: 15px;
+  }
+  section.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  section.data {
+    background: #00afb9;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 35px 0;
+    border-radius: 8px;
+    margin-bottom: 50px;
+  }
+  .data-item {
+    text-align: center;
+    width: 150px;
+  }
+  .data-item h3 {
+    font-size: 2.4em;
+    margin: 0;
+  }
+  .data-item p {
+    font-size: 1.2em;
+    margin: 5px 0 0 0;
+  }
+
+  section.auth {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    max-width: 500px;
+    margin: 0 auto 60px auto;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .tab-button {
+    background-color: #00afb9;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+  }
+  .tab-button.active {
+    background-color: #028a8f;
+  }
+
+  form {
+    display: none;
+    flex-direction: column;
+  }
+  form.active {
+    display: flex;
+  }
+  label {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  input, select {
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  input[type="submit"] {
+    background-color: #00afb9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #028a8f;
+  }
+
+  footer {
+    background-color: #004d53;
+    color: white;
+    text-align: center;
+    padding: 18px 10%;
+    font-size: 0.9em;
+  }
+
+  @media(max-width: 600px) {
+    .tabs {
+      flex-direction: column;
+    }
+    .tab-button {
+      margin: 5px 0;
+      border-radius: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Community Volunteer Connect</h1>
+  <p>Bringing Together Volunteers and Organizations to Make a Real Impact</p>
+</header>
+
+<main>
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      Community Volunteer Connect is a platform designed to bridge the gap between volunteers who want to make a difference and organizations that need helping hands for community-driven activities. Whether you want to give time to environmental projects, food drives, or social causes, our community brings opportunities to your fingertips.
+    </p>
+  </section>
+
+  <section class="data">
+    <div class="data-item">
+      <h3>120+</h3>
+      <p>Organizations Registered</p>
+    </div>
+    <div class="data-item">
+      <h3>500+</h3>
+      <p>Active Volunteers</p>
+    </div>
+    <div class="data-item">
+      <h3>75</h3>
+      <p>Activities This Year</p>
+    </div>
+    <div class="data-item">
+      <h3>10,000+</h3>
+      <p>Volunteer Hours Contributed</p>
+    </div>
+  </section>
+
+  <section class="auth">
+    <div class="tabs">
+      <button class="tab-button active" data-target="volunteer-signup">Volunteer Signup</button>
+      <button class="tab-button" data-target="volunteer-login">Volunteer Login</button>
+      <button class="tab-button" data-target="org-signup">Organization Signup</button>
+      <button class="tab-button" data-target="org-login">Organization Login</button>
+    </div>
+
+    <form id="volunteer-signup" class="active">
+      <label for="vol-name">Full Name</label>
+      <input type="text" id="vol-name" name="vol-name" required />
+
+      <label for="vol-email">Email</label>
+      <input type="email" id="vol-email" name="vol-email" required />
+
+      <label for="vol-phone">Phone Number</label>
+      <input type="tel" id="vol-phone" name="vol-phone" required />
+
+      <label for="vol-password">Password</label>
+      <input type="password" id="vol-password" name="vol-password" required />
+
+      <input type="submit" value="Sign Up as Volunteer" />
+    </form>
+
+    <form id="volunteer-login">
+      <label for="vol-login-email">Email</label>
+      <input type="email" id="vol-login-email" name="vol-login-email" required />
+
+      <label for="vol-login-password">Password</label>
+      <input type="password" id="vol-login-password" name="vol-login-password" required />
+
+      <input type="submit" value="Login as Volunteer" />
+    </form>
+
+    <form id="org-signup">
+      <label for="org-name">Organization Name</label>
+      <input type="text" id="org-name" name="org-name" required />
+
+      <label for="org-email">Email</label>
+      <input type="email" id="org-email" name="org-email" required />
+
+      <label for="org-phone">Phone Number</label>
+      <input type="tel" id="org-phone" name="org-phone" required />
+
+      <label for="org-password">Password</label>
+      <input type="password" id="org-password" name="org-password" required />
+
+      <input type="submit" value="Sign Up as Organization" />
+    </form>
+
+    <form id="org-login">
+      <label for="org-login-email">Email</label>
+      <input type="email" id="org-login-email" name="org-login-email" required />
+
+      <label for="org-login-password">Password</label>
+      <input type="password" id="org-login-password" name="org-login-password" required />
+
+      <input type="submit" value="Login as Organization" />
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Community Volunteer Connect. All rights reserved.
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-button');
+  const forms = document.querySelectorAll('form');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const target = tab.getAttribute('data-target');
+      forms.forEach(form => {
+        if(form.id === target) {
+          form.classList.add('active');
+        } else {
+          form.classList.remove('active');
+        }
+      });
+    });
+  });
+
+  // Simple form submit handlers:
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert(`Form submitted: ${this.id}`);
+      this.reset();
+    });
+  });
+</script>
+
+</body>
+</html>

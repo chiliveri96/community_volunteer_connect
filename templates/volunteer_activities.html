@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Activities | Community Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/postv.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <h1>Community Connect</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('volunteer_myactivities') }}">My Activities</a>
+    </nav>
+  </div>
+</header>
+
+<section class="intro-section">
+  <h2>Volunteer Activities</h2>
+  <p>Select an activity and make a positive impact on your community.</p>
+</section>
+
+<div class="activities-list">
+
+{% for a in activities %}
+<div class="activity-row">
+
+  <div class="activity-info">
+      <h3>{{ a.activity_name }}</h3>
+      <p><strong>Organization:</strong> {{ a.organization_name }}</p>
+      <p><strong>Contact Person:</strong> {{ a.contact_person }}</p>
+      <p><strong>Phone:</strong> {{ a.contact }}</p>
+      <p><strong>Date:</strong> {{ a.activity_date }} at {{ a.activity_time }}</p>
+      <p><strong>Address:</strong> {{ a.address }}</p>
+      <p><strong>Skills Needed:</strong> {{ a.volunteer_skills }}</p>
+      <p><strong>Volunteers Required:</strong> {{ a.volunteers_required }}</p>
+  </div>
+
+  <div class="activity-action">
+    {% if a.req_status == 'approved' %}
+        <button class="joined-btn" disabled>✅ Joined</button>
+
+    {% elif a.req_status == 'pending' %}
+        <button class="pending-btn" disabled>⏳ Pending</button>
+
+    {% elif a.req_status == 'rejected' %}
+        <button class="rejected-btn" disabled>❌ Rejected</button>
+
+    {% else %}
+        <form action="{{ url_for('volunteer_join_activity', activity_id=a.id) }}" method="POST">
+            <button class="join-btn" type="submit">Join Activity</button>
+        </form>
+    {% endif %}
+  </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+<footer>
+  <p>© <span id="year"></span> Community Connect</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

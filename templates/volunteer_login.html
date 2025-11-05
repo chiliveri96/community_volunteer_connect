@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Login | Community Connect</title>
+  
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loginv.css') }}">
+  
+  
+  <script src="{{ url_for('static', filename='js/loginv.js') }}"></script>
+</head>
+<body>
+
+  <div class="login-container">
+    
+    <div class="left-section">
+      <h1>Welcome Back!</h1>
+      <p>Connect with communities, make a difference, and help create change.</p>
+      <img src="https://cdn-icons-png.flaticon.com/512/4202/4202843.png" alt="Volunteer" class="illustration">
+    </div>
+
+  
+    <div class="right-section">
+      <h2>Volunteer Login</h2>
+      
+      <form id="loginForm" onsubmit="return validateLogin()" method="POST" action="{{ url_for('volunteer_login') }}">
+        
+              <label for="email">Email or Phone</label>
+      <input type="text" id="email" name="email_phone" placeholder="Enter email or phone" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+    
+        <button type="submit" class="button">Login</button>
+
+        <p class="signup-link">Don't have an account?
+          <a href="{{ url_for('volunteer_signup') }}">Signup</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Joined Activities | Community Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/myactivities.css') }}">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <h1>Community Connect</h1>
+    <nav>
+      <a href="{{ url_for('home') }}" class="nav-btn primary">Home</a>
+      <a href="{{ url_for('volunteer_activities') }}" class="nav-btn primary">Find Activity</a>
+      <a href="{{ url_for('volunteer_myactivities') }}" class="nav-btn active">My Activities</a>
+    </nav>
+  </div>
+</header>
+
+<section class="intro">
+  <h2>My Joined Activities</h2>
+  <p>Here are all the activities you’ve registered for.</p>
+</section>
+
+<section class="activities-container">
+  {% if activities %}
+    {% for act in activities %}
+      <div class="activity-card">
+        <h3>{{ act.activity_name }}</h3>
+        <p><strong>Organization:</strong> {{ act.organization_name }}</p>
+        <p><strong>Purpose:</strong> {{ act.purpose }}</p>
+        <p><strong>Date:</strong> {{ act.activity_date }}</p>
+        <p><strong>Time:</strong> {{ act.activity_time }}</p>
+        <p><strong>Address:</strong> {{ act.address }}</p>
+        <p><strong>Skills:</strong> {{ act.volunteer_skills }}</p>
+
+        <form action="{{ url_for('volunteer_leave_activity', activity_id=act.id) }}" method="POST" onsubmit="return confirmLeave()">
+  <button type="submit" class="leave-btn">❌ Leave Activity</button>
+</form>
+
+      </div>
+    {% endfor %}
+  {% else %}
+      <p class="no-activities">You haven’t joined any activities yet.</p>
+  {% endif %}
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Community Connect | All Rights Reserved</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

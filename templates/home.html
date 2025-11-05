@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Connect — Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+</head>
+<body>
+ <form method="POST" action="{{ url_for('home') }}">
+  
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to Community Connect</h1>
+      <p>Join hands with organizations or volunteer to make a meaningful difference in your community.</p>
+    </div>
+  </section>
+
+  <!-- Roles Section -->
+  <section class="roles">
+    <div class="container roles-container">
+      <!-- Volunteer Card -->
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h2>Volunteer</h2>
+        <p>Participate in community events, support local organizations, and gain experience while helping others.</p>
+        <div class="btn-group">
+	<a class="btn" href="{{ url_for('volunteer_signup') }}">Signup</a>
+	<a class="btn" href="{{ url_for('volunteer_login') }}">Login</a>
+
+         
+        </div>
+      </div>
+
+      <!-- Organization Card -->
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h2>Organization</h2>
+        <p>Post activities, recruit volunteers, and manage events efficiently through our platform.</p>
+        <div class="btn-group">
+         <a class="btn" href="{{ url_for('organization_signup') }}">Signup</a>
+	<a class="btn" href="{{ url_for('organization_login') }}">Login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <h2>About Community Connect</h2>
+      <p>
+        Community Connect bridges the gap between volunteers and organizations. Volunteers can find activities to participate in, 
+        while organizations can post events and recruit passionate contributors easily.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> Community Connect. All rights reserved.
+    </div>
+  </footer>
+</form>
+
+</body>
+</html>

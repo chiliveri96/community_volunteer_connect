@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organization Registration | Community Connect</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signupo.css') }}" />
+  <script src="{{ url_for('static', filename='js/signupo.js') }}" defer></script>
+</head>
+<body>
+  
+  <div class="register-container">
+    
+    <!-- Left Info Section -->
+    <div class="left-panel">
+      <div class="info-content">
+        <h1>Register Your organization</h1>
+        <p>
+          Connect your NGO, community, or social group with thousands of volunteers.  
+          Manage projects, recruit participants, and make a greater impact together.
+        </p>
+        <ul>
+          <li>🏢 Showcase your organization mission</li>
+          <li>🤝 Collaborate with local volunteers</li>
+          <li>📈 Track and grow your impact</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Form Section -->
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Organization Sign Up</h2>
+        <p class="subtitle">Please fill out your organization details</p>
+
+         <form id="organizationForm" onsubmit="return validateorganizationForm()" method="POST" action="{{ url_for('organization_signup') }}">
+      
+        <!-- <form id="organizationForm" method="POST" action="{{ url_for('organization_signup') }}">
+      -->
+          <div class="input-group">
+            <label for="organizationName">organization Name</label>
+            <input type="text" id="organizationName" name="organizationName" placeholder="Enter organization name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="contactPerson">Contact Person</label>
+            <input type="text" id="contactPerson" name="contactPerson" placeholder="Contact person name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required />
+          </div>
+
+          <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit phone number" required pattern="[0-9]{10}" />
+          </div>
+
+          <div class="input-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="2" placeholder="Enter organization address" required></textarea>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create password" required minlength="6" />
+          </div>
+
+          <div class="input-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required />
+          </div>
+
+          <button type="submit" class="btn">Sign Up</button>
+
+          <p class="login-link">
+            Already registered? <a href="{{ url_for('organization_login') }}">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
