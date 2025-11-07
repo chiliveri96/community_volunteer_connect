@@ -1,5 +1,5 @@
 -- DROP DATABASE IF EXISTS community_volunteer_connect;
-CREATE DATABASE community_volunteer_connect;
+-- CREATE DATABASE community_volunteer_connect;
 USE community_volunteer_connect;
 
 CREATE TABLE volunteers (
@@ -39,39 +39,6 @@ CREATE TABLE activities (
     FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE
 );
 
-CREATE TABLE volunteer_activities (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    volunteer_id INT NOT NULL,
-    activity_id INT NOT NULL,
-	joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'Pending',
-    request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (volunteer_id) REFERENCES volunteers(id) ON DELETE CASCADE,
-    FOREIGN KEY (activity_id) REFERENCES activities(id) ON DELETE CASCADE
-);
-
-CREATE TABLE activity_requests (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    volunteer_id INT NOT NULL,
-    activity_id INT NOT NULL,
-    status ENUM('pending','accepted','rejected') NOT NULL DEFAULT 'pending',
-    request_note TEXT,
-    request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (volunteer_id) REFERENCES volunteers(id) ON DELETE CASCADE,
-    FOREIGN KEY (activity_id) REFERENCES activities(id) ON DELETE CASCADE,
-    CONSTRAINT uq_request UNIQUE (volunteer_id, activity_id) -- prevent duplicate pending requests
-);
-
-CREATE TABLE volunteer_activity (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    volunteer_id INT NOT NULL,
-    activity_id INT NOT NULL,
-    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (volunteer_id) REFERENCES volunteers(id) ON DELETE CASCADE,
-    FOREIGN KEY (activity_id) REFERENCES activities(id) ON DELETE CASCADE,
-    CONSTRAINT uq_vol_activity UNIQUE (volunteer_id, activity_id) -- prevent duplicates
-);
-
 CREATE TABLE volunteer_activity_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
     volunteer_id INT NOT NULL,
@@ -81,34 +48,35 @@ CREATE TABLE volunteer_activity_requests (
     FOREIGN KEY (volunteer_id) REFERENCES volunteers(id) ON DELETE CASCADE,
     FOREIGN KEY (activity_id) REFERENCES activities(id) ON DELETE CASCADE
 );
+
 ALTER TABLE volunteer_activity_requests 
 MODIFY status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending';
-
-
-
-
-
-
-
-describe skill;
-describe organizations;
-describe organization_contact;
-describe volunteers;
-describe volunteer_contact;
-describe activities;
-describe activity_skill;
-describe volunteer_skill;
-describe activity_requests;
-describe volunteer_activities;
-describe organization_user;
-
-select *from organizations;
-select *from volunteers;
-select*from volunteer_activities;
-select *from activities;
-select *from volunteer_activity_requests;
-
 
 SELECT id, volunteer_id, activity_id, status
 FROM volunteer_activity_requests;
 
+
+
+
+describe organizations;
+describe volunteers;
+describe activities;
+describe volunteer_activities;
+
+select *from organizations ;
+select *from volunteers;
+select *from activities;
+select *from volunteer_activity_requests;
+
+
+-- DDL (Data Definition Language) CREATE DATABASE,DROP DATABASE,USE,CREATE TABLE,PRIMARY KEY,FOREIGN KEY,REFERENCES,AUTO_INCREMENT,UNIQUE,NOT NULL,DEFAULT,ENUM,CHECK,ON DELETE CASCADE
+
+-- DML (Data Manipulation Language) INSERT INTO,SELECT,UPDATE,DELETE,JOIN,WHERE,VALUES,FROM,SET
+SELECT VERSION();
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Akhil369';
+FLUSH PRIVILEGES;
+
+SELECT user, host, plugin FROM mysql.user WHERE user='root';
+
+
+SELECT user, host, plugin FROM mysql.user WHERE user='root';

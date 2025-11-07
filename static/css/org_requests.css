@@ -1,69 +1,156 @@
-.pending-btn {
-  background: orange;
-  color: white;
-  cursor: not-allowed;
+/* === General Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.rejected-btn {
-  background: crimson;
-  color: white;
-  cursor: not-allowed;
+body {
+  background-color: #f6f9fc;
+  color: #333;
+  min-height: 100vh;
 }
 
-<style>
-/* ✅ You can move this CSS to org_requests.css */
+/* === Header === */
+header {
+  background-color: #1e90ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-/* Grid layout for volunteer cards */
+header h1 {
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 15px;
+  border-radius: 8px;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: white;
+  color: #1e90ff;
+}
+
+/* === Main Content === */
+main {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #1e90ff;
+  font-weight: bold;
+}
+
+/* === Request Cards === */
 .requests-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
-  padding: 20px;
 }
 
-/* Volunteer card style */
 .request-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  font-family: Arial, sans-serif;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
-.request-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
+.request-card:hover {
+  transform: translateY(-3px);
 }
 
-.info-label {
-  font-weight: bold;
+.request-header h3 {
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.activity-name {
+  color: #555;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* === Request Body === */
+.request-body p {
+  margin: 6px 0;
   color: #444;
 }
 
-.status {
-  font-size: 16px;
-  margin: 8px 0;
-  font-weight: bold;
+/* === Footer Buttons and Status === */
+.request-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Buttons */
-.btn-approve, .btn-reject {
-  padding: 8px 14px;
-  border-radius: 8px;
+.status span {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.pending {
+  color: #f1c40f;
+}
+
+.approved {
+  color: #27ae60;
+}
+
+.rejected {
+  color: #e74c3c;
+}
+
+.btn {
   text-decoration: none;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.btn-approve {
-  background: #28a745;
-  color: #fff;
+.approve {
+  background-color: #27ae60;
+  color: white;
 }
 
-.btn-reject {
-  background: blue;
-  color: #fff;
+.reject {
+  background-color: #e74c3c;
+  color: white;
 }
-</style>
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.done {
+  color: #555;
+  font-style: italic;
+}
+
+/* === No Requests === */
+.no-requests {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+  font-size: 18px;
+}

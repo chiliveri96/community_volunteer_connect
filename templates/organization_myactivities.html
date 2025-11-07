@@ -1,105 +1,3 @@
-<!--
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Posted Activities</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/myactivities_org.css') }}">
-    <script defer src="{{ url_for('static', filename='js/myactivities_org.js') }}"></script>
-
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-</head>
-
-<body>
-
-<header class="top-nav">
-    <h2>📋 Posted Activities</h2>
-    <div>
-        <a href="{{ url_for('home') }}" class="nav-btn primary">Home</a>
-        <a href="{{ url_for('organization_post') }}" class="nav-btn primary">+ New Activity</a>
-    </div>
-</header>
-
-<section class="container">
-<div class="grid">
-    {% for act in activities %}
-    <div class="card">
-
-        <h3>{{ act.activity_name }}</h3>
-        <p class="desc">{{ act.purpose }}</p>
-        <p><b>📅 Date:</b> {{ act.activity_date }}</p>
-        <p><b>⏰ Time:</b> {{ act.activity_time }}</p>
-        <p><b>📍 Location:</b> {{ act.address }}</p>
-        <p><b>👥 Volunteers Required:</b> {{ act.volunteers_required }}</p>
-        <p><b>⭐ Skills Needed:</b> {{ act.volunteer_skills }}</p>
-        <p><b>☎ Contact:</b> {{ act.contact }}</p>
-
-        <div class="actions">
-        
-            <button class="edit-btn"
-                onclick="openEditModal(
-                    '{{ act.id }}',
-                    '{{ act.activity_name }}',
-                    '{{ act.purpose }}',
-                    '{{ act.activity_date }}',
-                    '{{ act.activity_time }}',
-                    '{{ act.address }}',
-                    '{{ act.volunteers_required }}',
-                    '{{ act.volunteer_skills }}',
-                    '{{ act.contact }}'
-                )">
-                Edit
-            </button>
-
-            
-            <a class="delete-btn"
-               href="{{ url_for('delete_activity', id=act.id) }}"
-               onclick="return confirm('Delete this activity?');">
-               Delete
-            </a>
-
-             ✅ Requests button (Correct with activity_id) 
-            <a class="request-btn" class="nav-btn primary"
-               href="{{ url_for('organization_requests', activity_id=act.id) }}">
-               Requests
-            </a>
-        </div>
-
-    </div>
-    {% endfor %}
-</div>
-</section>
-
-<div id="editModal" class="modal-bg hidden">
-    <div class="modal-box">
-        <h2>Edit Activity</h2>
-
-        <form id="editForm" method="POST">
-            <input type="text" id="title" name="activity_name" placeholder="Activity Name" required>
-            <textarea id="description" name="purpose" placeholder="Purpose" required></textarea>
-            <input type="date" id="date" name="activity_date" required>
-            <input type="time" id="time" name="activity_time" required>
-            <input type="text" id="location" name="address" placeholder="Address" required>
-            <input type="number" id="volunteers" name="volunteers_required" placeholder="Volunteers Required" required>
-            <input type="text" id="skills" name="skills" placeholder="Skills" required>
-            <input type="text" id="contact" name="contact" placeholder="Contact" required>
-
-            <div class="modal-actions">
-                <button type="submit" class="save-btn">Save</button>
-                <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-</body>
-</html>
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,9 +9,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 </head>
-
 <body>
-
 <header class="top-nav">
     <h2>📋 Posted Activities</h2>
     <div>
@@ -121,7 +17,6 @@
         <a href="{{ url_for('organization_post') }}" class="nav-btn primary">+ New Activity</a>
     </div>
 </header>
-
 <!-- ✅ Intro Box -->
 <section class="intro-box">
     <h2>Why Post Activities?</h2>
@@ -136,12 +31,10 @@
     </ul>
     <p class="tip"><b>Tip:</b> Provide clear information to attract more volunteers!</p>
 </section>
-
 <section class="container">
 <div class="grid">
     {% for act in activities %}
     <div class="card">
-
         <h3>{{ act.activity_name }}</h3>
         <p class="desc">{{ act.purpose }}</p>
         <p><b>📅 Date:</b> {{ act.activity_date }}</p>
@@ -150,7 +43,6 @@
         <p><b>👥 Volunteers Required:</b> {{ act.volunteers_required }}</p>
         <p><b>⭐ Skills Needed:</b> {{ act.volunteer_skills }}</p>
         <p><b>☎ Contact:</b> {{ act.contact }}</p>
-
         <div class="actions">
             <button class="edit-btn"
                 onclick="openEditModal(
@@ -160,7 +52,6 @@
                 )">
                 Edit
             </button>
-
             <a class="delete-btn"
                href="{{ url_for('delete_activity', id=act.id) }}"
                onclick="return confirm('Delete this activity?');">
@@ -177,7 +68,6 @@
     {% endfor %}
 </div>
 </section>
-
 <!-- Edit Modal -->
 <div id="editModal" class="modal-bg hidden">
     <div class="modal-box">
@@ -191,9 +81,7 @@
             <input type="text" id="location" name="address" placeholder="Address" required>
             <input type="number" id="volunteers" name="volunteers_required" placeholder="Volunteers Required" required>
             <input type="text" id="skills" name="volunteer_skills" placeholder="Skills" required>
-
             <input type="text" id="contact" name="contact" placeholder="Contact" required>
-
             <div class="modal-actions">
                 <button type="submit" class="save-btn">Save</button>
                 <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>

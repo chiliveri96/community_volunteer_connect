@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +49,79 @@
 {% else %}
 <p style="text-align:center;">No join requests yet.</p>
 {% endif %}
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Requests | Community Volunteer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/org_requests.css') }}">
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="header-left">
+      <h1>Community Volunteer</h1>
+    </div>
+    <div class="header-right">
+      <a href="{{ url_for('organization_myactivities') }}" class="nav-btn">📋 My Activities</a>
+      <a href="{{ url_for('organization_post') }}" class="nav-btn">➕ Post Activity</a>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="page-title">Volunteer Join Requests</h2>
+
+    {% if requests %}
+    <div class="requests-container">
+      {% for r in requests %}
+      <div class="request-card">
+
+        <div class="request-header">
+          <h3>{{ r.full_name }}</h3>
+          <p class="activity-name">Activity: {{ r.activity_name }}</p>
+        </div>
+
+        <div class="request-body">
+          <p><strong>📞 Phone:</strong> {{ r.phone }}</p>
+          <p><strong>📧 Email:</strong> {{ r.email }}</p>
+          <p><strong>💡 Skills:</strong> {{ r.skills }}</p>
+        </div>
+
+        <div class="request-footer">
+          <div class="status">
+            {% if r.status == 'pending' %}
+              <span class="pending">🟡 Pending</span>
+            {% elif r.status == 'approved' %}
+              <span class="approved">🟢 Approved</span>
+            {% else %}
+              <span class="rejected">🔴 Rejected</span>
+            {% endif %}
+          </div>
+
+          {% if r.status == 'pending' %}
+            <div class="action-buttons">
+              <a href="{{ url_for('organization_approve', req_id=r.req_id) }}" class="btn approve">✅ Approve</a>
+              <a href="{{ url_for('organization_reject', req_id=r.req_id) }}" class="btn reject">❌ Reject</a>
+            </div>
+          {% else %}
+            <p class="done">✔️ Request Processed</p>
+          {% endif %}
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="no-requests">No volunteer requests yet.</p>
+    {% endif %}
+  </main>
 
 </body>
 </html>
